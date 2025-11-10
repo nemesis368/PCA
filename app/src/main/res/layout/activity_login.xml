@@ -4,129 +4,161 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#F8F9FA"
+    android:background="#FFFFFF"
     tools:context=".LoginActivity">
 
-    <!-- Contenedor para el contenido principal para centrarlo verticalmente --><LinearLayout
-    android:id="@+id/content_container"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical"
-    android:gravity="center_horizontal"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintVertical_bias="0.4"> <!-- Ajusta este valor (0.0 a 1.0) para mover el centro verticalmente. 0.4 es un buen punto. --><!-- La imagen de la clínica/logo. ¡ASEGÚRATE DE QUE EXISTA Y ESTÉ EN res/drawable/! --><ImageView
-    android:id="@+id/iv_login_image"
-    android:layout_width="160dp"
-    android:layout_height="160dp"
-    android:src="@drawable/dentis"
-    android:contentDescription="Logo o imagen de la clínica dental"
-    android:scaleType="centerCrop"
-    android:layout_marginBottom="24dp"/>
-
-    <!-- Texto de Bienvenida --><TextView
-        android:id="@+id/tv_welcome_title"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="¡Es hora de sonreír!"
-        android:textAppearance="?attr/textAppearanceHeadline5"
-        android:textColor="#343A40"
-        android:textStyle="bold" />
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintVertical_bias="0.35">
+
+        <ImageView
+            android:id="@+id/iv_login_image"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:src="@drawable/dentis"
+            android:contentDescription="Logo de la clínica dental"
+            android:scaleType="centerCrop"
+            android:layout_marginBottom="16dp"/>
+
+        <TextView
+            android:id="@+id/tv_welcome_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="¡Es hora de sonreír!"
+            android:textAppearance="?attr/textAppearanceHeadline5"
+            android:textColor="#343A40"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tv_welcome_subtitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Selecciona tu rol para ingresar"
+            android:textAppearance="?attr/textAppearanceSubtitle1"
+            android:textColor="#6C757D"
+            android:layout_marginBottom="24dp"/>
+
+        <com.google.android.material.button.MaterialButtonToggleGroup
+            android:id="@+id/toggle_role_selection"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="24dp"
+            app:selectionRequired="true"
+            app:singleSelection="true"
+            app:checkedButton="@id/btn_role_client"
+            app:strokeColor="#00A79D" >
+
+            <Button
+                android:id="@+id/btn_role_client"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cliente"
+                android:textColor="@color/toggle_button_text"
+                android:backgroundTint="@color/toggle_button_tint" />
+
+            <Button
+                android:id="@+id/btn_role_admin"
+                style="?attr/materialButtonOutlinedStyle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Administrador"
+                android:textColor="@color/toggle_button_text"
+                android:backgroundTint="@color/toggle_button_tint" />
+
+        </com.google.android.material.button.MaterialButtonToggleGroup>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_email"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:hint="Correo Electrónico"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textEmailAddress"
+                android:drawableStart="@drawable/ic_email_grey"
+                android:drawablePadding="12dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/input_layout_password"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="16dp"
+            android:hint="Contraseña"
+            app:boxCornerRadiusBottomEnd="12dp"
+            app:boxCornerRadiusBottomStart="12dp"
+            app:boxCornerRadiusTopEnd="12dp"
+            app:boxCornerRadiusTopStart="12dp"
+            app:passwordToggleEnabled="true">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/et_password"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:inputType="textPassword"
+                android:drawableStart="@drawable/ic_lock_grey"
+                android:drawablePadding="12dp"/>
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <TextView
+            android:id="@+id/tv_forgot_password"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="32dp"
+            android:text="¿Olvidaste tu contraseña?"
+            android:textAppearance="?attr/textAppearanceBody2"
+            android:textColor="#00A79D"
+            android:gravity="end" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_login"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="32dp"
+            android:layout_marginTop="32dp"
+            android:backgroundTint="#00A79D"
+            android:paddingVertical="14dp"
+            android:text="Ingresar"
+            android:textAppearance="?attr/textAppearanceButton"
+            android:textStyle="bold"
+            app:cornerRadius="16dp" />
+
+    </LinearLayout>
 
     <TextView
-        android:id="@+id/tv_welcome_subtitle"
+        android:id="@+id/tv_register_link"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="4dp"
-        android:text="Inicia sesión para gestionar tu salud dental"
-        android:textAppearance="?attr/textAppearanceSubtitle1"
-        android:textColor="#6C757D"
-        android:layout_marginBottom="32dp"/>
-
-    <!-- Campo de Correo Electrónico --><com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_email"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:hint="Correo Electrónico"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_email"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textEmailAddress"
-            android:drawableStart="@drawable/ic_email_grey"
-            android:drawablePadding="12dp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Campo de Contraseña --><com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/input_layout_password"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="16dp"
-        android:hint="Contraseña"
-        app:boxCornerRadiusBottomEnd="12dp"
-        app:boxCornerRadiusBottomStart="12dp"
-        app:boxCornerRadiusTopEnd="12dp"
-        app:boxCornerRadiusTopStart="12dp"
-        app:passwordToggleEnabled="true">
-
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/et_password"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:inputType="textPassword"
-            android:drawableStart="@drawable/ic_lock_grey"
-            android:drawablePadding="12dp"/>
-
-    </com.google.android.material.textfield.TextInputLayout>
-
-    <!-- Olvidé Contraseña --><TextView
-        android:id="@+id/tv_forgot_password"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="32dp"
-        android:text="¿Olvidaste tu contraseña?"
+        android:layout_marginBottom="48dp"
+        android:text="¿No tienes cuenta? Regístrate aquí"
         android:textAppearance="?attr/textAppearanceBody2"
-        android:textColor="#00A79D"
-        android:layout_gravity="end" />
-
-    <!-- Botón de Ingresar --><com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_login"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="32dp"
-        android:backgroundTint="#00A79D"
-        android:paddingVertical="14dp"
-        android:text="Ingresar"
-        android:textAppearance="?attr/textAppearanceButton"
-        android:textStyle="bold"
-        app:cornerRadius="16dp" />
-
-</LinearLayout>
-
-    <!-- Link a Registrarse (este se mantiene abajo) --><TextView
-    android:id="@+id/tv_register_link"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginBottom="48dp"
-    android:text="¿No tienes cuenta? Regístrate aquí"
-    android:textAppearance="?attr/textAppearanceBody2"
-    android:textColor="#6C757D"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintStart_toStartOf="parent" />
+        android:textColor="#6C757D"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
